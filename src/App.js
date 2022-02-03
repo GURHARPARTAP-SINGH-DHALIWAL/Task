@@ -8,17 +8,24 @@ class App extends React.Component {
       message:""
     };
   }
+
+
   handleChange=(e)=>{
+
    this.setState({
      dateOfBirth:e.target.value
    });
-   console.log(this.state);
+   
   };
+
+
+
   handleClick=(e)=>{
+
     e.preventDefault();
 
     const DOB=new Date(this.state.dateOfBirth);
-    console.log(DOB);
+  
     if(DOB.getTime()>Date.now())
     {
       this.setState({
@@ -29,71 +36,71 @@ class App extends React.Component {
     else
     {  
     
-  let inputData, inputArray, year, month, day;
+        let inputData, inputArray, year, month, day;
 
   
-  inputData =this.state.dateOfBirth;
+        inputData =this.state.dateOfBirth;
 
  
 
   
-  if (inputData !== "") {
+        if (inputData !== "") {
 
-   
-    inputArray = inputData.split("-");
-    
-    [year, month, day] = inputArray;
-    year = Number(year);
-    month = Number(month);
-    day = Number(day);
+        
+          inputArray = inputData.split("-");
+          
+          [year, month, day] = inputArray;
+          year = Number(year);
+          month = Number(month);
+          day = Number(day);
 
-  
-    let current, currentYear, currentMonth, currentDate, Newdate, newMonth;
+        
+          let current, currentYear, currentMonth, currentDate, Newdate, newMonth;
 
-    
-    current = new Date();
-    currentYear = current.getFullYear();
-    currentMonth = current.getMonth() + 1; 
-    currentDate = current.getDate();
+          
+          current = new Date();
+          currentYear = current.getFullYear();
+          currentMonth = current.getMonth() + 1; 
+          currentDate = current.getDate();
 
-   
-    if (day === currentDate && month === currentMonth) {
-      let birthday = currentYear - year;
-      this.setState({
-        message:`Congratulation! Today Is your birthday your are <span class="year">${birthday}</span> Years Old. `
-      });
-    }
-     else {
+        
+          if (day === currentDate && month === currentMonth) {
+            let birthday = currentYear - year;
+            this.setState({
+              message:`Congratulation! Today Is your birthday your are${birthday} Years Old. `
+            });
+          }
+          else {
 
-     
-      if (day > currentDate) 
-      {
-        Newdate = currentDate + 30;
-        day = Newdate - day;
-        currentMonth = currentMonth - 1;
-      }
-       else
-        {
-        day = currentDate - day;
-      }
-    
-      if (month > currentMonth)
-       {
-        newMonth = currentMonth + 12;
-        month = newMonth - month;
-        currentYear = currentYear - 1;
-      } 
-      else 
-      {
-        month = currentMonth - month;
-      }
-      year = currentYear - year;
+          
+            if (day > currentDate) 
+            {
+              Newdate = currentDate + 30;
+              day = Newdate - day;
+              currentMonth = currentMonth - 1;
+            }
+            else
+              {
+              day = currentDate - day;
+            }
+          
+            if (month > currentMonth)
+            {
+              newMonth = currentMonth + 12;
+              month = newMonth - month;
+              currentYear = currentYear - 1;
+            } 
+            else 
+            {
+              month = currentMonth - month;
+            }
+            year = currentYear - year;
 
-    }
+          }
 
-     this.setState({
-       message: `Your Age : ${year} Years ${month} Months ${day} Days.`,
-     });
+          this.setState({
+            message: `Your Age : ${year} Years ${month} Months ${day} Days.`,
+          });
   }
   else
   {
